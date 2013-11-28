@@ -180,6 +180,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.14)
   rails (= 4.0.1)
   rake-compiler (~> 0.8.1)
+  rb-fsevent (~> 0.9.3)
   rspec (~> 2.8.0)
   rspec-rails
   sass-rails (~> 4.0.0)

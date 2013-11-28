@@ -62,8 +62,9 @@ group :test, :development do
   # Will popup growl notification for pass or fail
   gem 'growl'
 
-  #spork server required by guard gem
-  #gem 'guard-spork'
+  gem 'rb-fsevent', '~> 0.9.3'
+
+
 
 
 end

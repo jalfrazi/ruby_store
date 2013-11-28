@@ -1,4 +1,22 @@
 RubyStore::Application.routes.draw do
+  resources :order_products
+
+  resources :orders
+
+  resources :sizes
+
+  resources :types
+
+  resources :materials
+
+  resources :products
+
+  resources :addresses
+
+  resources :customers
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
