@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+<td><b><%= link_to @customer.first.firstName + ' ' + @customer.first.lastName,    customer_details_path(@customer.first) %></b></td>
+
+<p><td>Order Id: <%= @order.id %></td> <td>Total: <%= @order.total %></td></p>
+
+<hr>
+
+<table>
+
+  <tr>
+      <th>Name </th>
+      <th>Type  </th>
+      <th>Description </th>
+      <th>Image </th>
+      <th>Price </th>
+      <th>Quantity </th>
+
+  </tr>
+
+  <!--Going through each pre-selected instances of orderProduct-->
+  <% @order_products.each do |order_product| %>
+
+      <!--Selecting Product with same product id as in orderProduct-->
+      <% @product = Product.where("id = #{order_product.product_id}").first %>
+
+      <!--Display Product Details-->
+      <tr>
+        <td><%= @product.name            %></td>
+        <td><%= @product.type_id         %></td>
+        <td><%= @product.description     %></td>
+        <td><%= image_tag(GetImageUrl(order_product.product_id, 'small'), alt: 'product image') %></td>
+        <td><%= @product.price           %></td>
+        <td><%= order_product.quantity   %></td>
+        <td><%= link_to 'Details',  product_details_path(@product.id) %></td>
+
+      </tr>
+
+
+  <% end %>
+
+
+</table>
+
+<%= link_to 'Back', order_path %>
+
+
+
+

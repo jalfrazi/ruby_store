@@ -4,9 +4,9 @@ class CreateAddresses < ActiveRecord::Migration
       t.integer :customer_id
       t.string :address1
       t.string :address2
-      t.string :index
-      t.string :town
-      t.string :county
+      t.string :code
+      t.string :city
+      t.string :state
       t.string :country
 
       t.timestamps

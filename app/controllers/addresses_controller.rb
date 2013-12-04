@@ -10,7 +10,11 @@ class AddressesController < ApplicationController
   # GET /addresses/1
   # GET /addresses/1.json
   def show
+
+    @customer = Customer.where(id: @address.customer_id)
   end
+
+
 
   # GET /addresses/new
   def new
@@ -69,6 +73,6 @@ class AddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:customer_id, :address1, :address2, :index, :town, :county, :country)
+      params.require(:address).permit(:customer_id, :address1, :address2, :code, :city, :state, :country)
     end
 end

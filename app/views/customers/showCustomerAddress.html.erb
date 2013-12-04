@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<td> <b><%= link_to @customer.firstName + ' ' + @customer.lastName,    customer_details_path(@customer) %> </b></td>
+
+<p> <b>Phone:</b>        <%= @customer.phone %></p>
+<p> <b>Email:</b>        <%= @customer.email %></p>
+<p> <b>Password:</b>     <%= @customer.password %></p>
+
+
+<table border=1>
+
+  <tr> <td>Address 1: </td>     <td><%= @address.address1 %></td> </tr>
+  <tr> <td>Address 2: </td>     <td><%= @address.address2 %></td> </tr>
+  <tr> <td>Town: </td>          <td><%= @address.code %></td> </tr>
+  <tr> <td>Town: </td>          <td><%= @address.city %></td> </tr>
+  <tr> <td>County: </td>        <td><%= @address.state %></td> </tr>
+  <tr> <td>Country: </td>       <td><%= @address.country %></td> </tr>
+
+</table>
+
+<%= link_to 'Edit Details', edit_customer_path(@customer) %> |
+    <%= link_to 'Edint Address', edit_address_path(@address)%> |
+    <%= link_to 'Back', customers_path %>

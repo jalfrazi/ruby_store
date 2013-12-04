@@ -6,10 +6,18 @@ gem 'rails', '4.0.1'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
+
+
 # Use mysql2 as the database for Active Record
-gem 'mysql2', '~> 0.3.14 '
+# gem 'mysql2'
+gem 'mysql2'
 # Mysql2Development Dependencies
 gem 'rake-compiler', '~> 0.8.1'
+
+
+
+
+
 
 gem 'rspec', '~> 2.8.0'
 
@@ -35,13 +43,15 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 
-
+# Devise is a rails gem to provide secure login
+gem 'devise', '~> 3.2.2'
 
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
 
 
 
@@ -65,16 +75,23 @@ group :test, :development do
   gem 'rb-fsevent', '~> 0.9.3'
 
 
-
-
 end
 
- # gem 'growlnotifier', '~> 1.0.2'
- # gem 'ruby_gntp'
- # gem 'growl_notify_osascript'
- # gem 'growl_notify'  ,  '~> 0.0.2'
- # require
- # gem 'rb-fsevent'
+
+
+
+
+
+ ## db:automigrate drops if table exists to create it again.
+ ## db:autoupgrade upgrades database schema to match your model properties.
+ ## Fettching it from git as there is not yet released version for rails 4
+ #gem 'data_mapper',         '~> 1.2'
+ #gem 'dm-rails',         '~> 1.2.1', github: 'datamapper/dm-rails',         branch: 'release-1.2'
+ #  #require
+ #          gem 'dm-active_model',  '~> 1.2.1', github: 'datamapper/dm-active_model',  branch: 'release-1.2'
+ #          gem 'dm-core',  '~> 1.2.1', github: 'datamapper/dm-core',  branch: 'release-1.2'
+ #          gem 'dm-mysql-adapter' ,   '~> 1.2', github: 'datamapper/dm-mysql-adapter',         branch: 'release-1.2'
+ #          gem 'dm-migrations' ,   '~> 1.2.0', github: 'datamapper/dm-migrations',         branch: 'release-1.2'
 
 
 
@@ -83,10 +100,7 @@ end
 
 
 
-
-
-
-# Use ActiveModel has_secure_password
+ # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server

@@ -1,0 +1,101 @@
+<p id="notice"><%= notice %></p>
+
+
+<p><td><%= image_tag(@images.first.url, alt: 'product img') %></td></p>
+
+
+
+
+<p>
+  <strong>Name:</strong><%= @product.name %> |
+
+  <strong>Type:</strong><%= @productType.first.name %>
+</p>
+
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+
+
+  <strong>Categories:</strong>
+  <table>
+
+    <tr>
+      <td>For who: </td>
+      <td>Occasion: </td>
+      <td>Age: </td>
+    </tr>
+
+    <!--Going through each pre-selected instances of productCategory-->
+    <% @productCategories.each do |product_category| %>
+
+        <!--Selecting category with same category id as in productCategory-->
+        <% @categories = Category.where(id: product_category.category_id) %>
+
+        <!--Displaying Category-->
+
+
+        <% @categories.each do |category| %>
+
+            <tr>
+              <td><%= category.name %></td>
+              <td><%= category.occasion ? category.occasion : '----------' %></td>
+              <td><%= category.age ? category.age : '----' %></td>
+              <td><%= link_to 'Remove', product_category_path(product_category.id, :returnUrl => '1'), method: :delete, confirm: 'Are you sure?'  %></td>
+            </tr>
+
+
+
+
+
+      <% end %>
+      <% end %>
+
+   </table>
+</p>
+
+
+
+
+  <strong>Materials:</strong>
+    <table>
+
+
+
+      <!--Going through each pre-selected instances of productCategory-->
+      <% @productMaterials.each do |product_material| %>
+
+          <!--Selecting category with same category id as in productCategory-->
+          <% @material = Material.where(id: product_material.material_id) %>
+
+      <!--Displaying Category-->
+      <tr>
+        <td><%= @material.first.name %></td>
+        <td><%= link_to 'Remove', product_material_path(product_material.id, :returnUrl => '1'), method: :delete, confirm: 'Are you sure?'  %> </td>
+      </tr>
+
+    <% end %>
+
+    </table>
+</p>
+
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %> |
+  <strong>Discount:</strong>
+  <%= @product.discount %> |
+  <strong>Stock:</strong>
+  <%= @product.stock %> |
+  <strong>Status:</strong>
+  <%= @product.status %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

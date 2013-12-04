@@ -69,6 +69,6 @@ class SizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def size_params
-      params.require(:size).permit(:product_id, :name, :country, :in, :mm)
+      params.require(:size).permit(:type_id, :name, :us, :uk, :cn, :ind, :it, :inch, :mm)
     end
 end

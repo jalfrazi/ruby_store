@@ -1,0 +1,33 @@
+<h1>Listing product_materials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Material</th>
+      <th>G</th>
+      <th>Oz</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_materials.each do |product_material| %>
+      <tr>
+        <td><%= product_material.product_id %></td>
+        <td><%= product_material.material_id %></td>
+        <td><%= product_material.g %></td>
+        <td><%= product_material.oz %></td>
+        <td><%= link_to 'Show', product_material %></td>
+        <td><%= link_to 'Edit', edit_product_material_path(product_material) %></td>
+        <td><%= link_to 'Destroy', product_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product material', new_product_material_path %>

@@ -12,6 +12,37 @@ class CustomersController < ApplicationController
   def show
   end
 
+
+  # GET /customers/showAddress/1
+  def showCustomerAddress
+
+    @customer = Customer.find(params[:id])
+    @address = @customer.address
+
+    # Formatting HTML and XML responce and rendering it back in view
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @customer }
+    end
+  end
+
+
+  # GET /customers/showOrders/1
+  def showCustomerOrders
+
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders
+    #@order_product = OrderProduct.find_all_by_order_id(@order)
+
+    #@product = Product.find_all_by_id(@order_product)
+
+    # Formatting HTML and XML responce and rendering it back in view
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @customer }
+    end end
+
+
   # GET /customers/new
   def new
     @customer = Customer.new

@@ -1,1 +1,1 @@
-json.extract! @material, :product_id, :name, :created_at, :updated_at
+json.extract! @material, :name, :quality, :created_at, :updated_at

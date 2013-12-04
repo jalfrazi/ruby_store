@@ -5,7 +5,9 @@ describe "products/index" do
     assign(:products, [
       stub_model(Product,
         :name => "Name",
+        :type_id => 1,
         :description => "MyText",
+        :imageUrl => "Image Url",
         :price => "9.99",
         :discount => "9.99",
         :stock => 1,
@@ -13,7 +15,9 @@ describe "products/index" do
       ),
       stub_model(Product,
         :name => "Name",
+        :type_id => 1,
         :description => "MyText",
+        :imageUrl => "Image Url",
         :price => "9.99",
         :discount => "9.99",
         :stock => 1,
@@ -27,7 +31,11 @@ describe "products/index" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
+    assert_select "tr>td", :text => 1.to_s, :count => 2
+    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    assert_select "tr>td", :text => "Image Url".to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p><b><%= link_to @customer.firstName + ' ' + @customer.lastName, customer_details_path(@customer)%> </b></p>
+<p><%= @customer.email %></p>
+
+
+
+<hr>
+
+<table>
+  <tr>
+    <th>Discount</th>
+    <th>Tax</th>
+    <th>Shipping</th>
+    <th>Total</th>
+    <th>Payment</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+
+  <% @orders.each do |order| %>
+      <tr>
+          <td><%= order.discount    %></td>
+          <td><%= order.tax         %></td>
+          <td><%= order.shippingFee %></td>
+          <td><%= order.total       %></td>
+          <td><%= order.payment_id  %></td>
+          <td><%= order.status      %></td>
+          <td><%= order.created_at  %></td>
+
+          <td><%= link_to 'Show',    order %></td>
+          <td><%= link_to 'Edit',    edit_order_path(order) %></td>
+          <td><%= link_to 'Details', order_details_path(order) %></td>
+          <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> | <%= link_to 'Back', customers_path %>

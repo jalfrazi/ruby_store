@@ -1,19 +1,44 @@
 RubyStore::Application.routes.draw do
-  resources :order_products
+  resources :images
 
-  resources :orders
+  resources :categories
 
-  resources :sizes
-
-  resources :types
-
-  resources :materials
-
-  resources :products
+  resources :product_materials
 
   resources :addresses
 
   resources :customers
+
+  resources :products
+
+  resources :materials
+
+  resources :sizes
+
+  resources :product_categories
+
+  resources :product_sizes
+
+  resources :order_products
+
+  resources :orders
+
+  resources :types
+
+
+  get ''                    => 'orders#index',          :as => :first_page
+
+  get 'showCustomerAddress/:id' => 'customers#showCustomerAddress',   :as => :customer_details
+
+  get 'showOrderDetails/:id'    => 'orders#showOrderDetails', :as => :order_details
+
+  get 'showCustomerOrders/:id'  => 'customers#showCustomerOrders',    :as => :customer_orders
+
+  get 'productShow/:id'  => 'products#show'
+
+  get 'showProductDetails/:id' => 'products#showProductDetails', :as => :product_details
+
+
 
 
 

@@ -10,7 +10,23 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
   end
+
+  # GET /products/showProductDetails/1
+  # GET /products/showProductDetails/1.json
+  def showProductDetails
+
+    # Assigning the Product, Type, Categories, and Materials
+    @product = Product.find(params[:id])
+    @productType = Type.where(id: @product.type_id)
+    @productCategories = ProductCategory.where(product_id: @product.id)
+    @productMaterials = ProductMaterial.where(product_id: @product.id)
+    @images = Image.where(product_id: @product.id, name: 'medium')
+
+
+  end
+
 
   # GET /products/new
   def new
@@ -69,6 +85,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :discount, :stock, :status)
+      params.require(:product).permit(:name, :type_id, :description, :imageUrl, :price, :discount, :stock, :status)
     end
 end

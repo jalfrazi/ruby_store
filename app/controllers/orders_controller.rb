@@ -12,6 +12,70 @@ class OrdersController < ApplicationController
   def show
   end
 
+
+  # GET /orders/showOrderDetails/1
+
+  def showOrderDetails
+
+    # Assigning the Order
+    @order = Order.find(params[:id])
+    @customer = Customer.where("id = #{@order.customer_id}")
+
+    # Assigning all Products in the Order
+    @order_products = OrderProduct.where("order_id = #{@order.id}")
+
+    # Formatting HTL and XML responce and rendering it back in view
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @order_products }
+    end
+
+  end
+
+
+
+
+
+
+
+  # GET /orders/showAllOrderAndDetails/1
+  def showAllOrderDetails
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders    # Activerecord colelction of orders assigned to a customer
+
+
+
+    @orders.each do |order|
+      puts 'Order ' + order.id.to_s  + ' Total ' + order.total.to_s
+      @order_products = OrderProduct.where("order_id = #{ order.id }")
+      #puts  @order_product
+
+      @order_products.each do |products|
+        @products = Product.where("id = #{products.product_id}")
+        @products.each do |product |
+          puts 'Name:  ' + product.name + ' Price: ' + product.price.to_s
+        end
+      end
+    end
+
+    puts "***********************"
+
+
+    # Formatting HTML and XML responce and rendering it back in view
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @order }
+    end
+
+  end
+
+
+
+
+
+
+
+
   # GET /orders/new
   def new
     @order = Order.new

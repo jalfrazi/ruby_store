@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @address.customer_id %>
-</p>
+
+<td><%= link_to @customer.first.firstName + ' ' + @customer.first.lastName,    customer_details_path(@customer.first) %></td>
+
 
 <p>
   <strong>Address1:</strong>
@@ -16,18 +15,18 @@
 </p>
 
 <p>
-  <strong>Index:</strong>
-  <%= @address.index %>
+  <strong>Code:</strong>
+  <%= @address.code %>
 </p>
 
 <p>
-  <strong>Town:</strong>
-  <%= @address.town %>
+  <strong>City:</strong>
+  <%= @address.city %>
 </p>
 
 <p>
-  <strong>County:</strong>
-  <%= @address.county %>
+  <strong>State:</strong>
+  <%= @address.state %>
 </p>
 
 <p>

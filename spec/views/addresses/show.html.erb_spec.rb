@@ -6,9 +6,9 @@ describe "addresses/show" do
       :customer_id => 1,
       :address1 => "Address1",
       :address2 => "Address2",
-      :index => "Index",
-      :town => "Town",
-      :county => "County",
+      :code => "Code",
+      :city => "City",
+      :state => "State",
       :country => "Country"
     ))
   end
@@ -22,11 +22,11 @@ describe "addresses/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Address2/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Index/)
+    rendered.should match(/Code/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Town/)
+    rendered.should match(/City/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/County/)
+    rendered.should match(/State/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Country/)
   end

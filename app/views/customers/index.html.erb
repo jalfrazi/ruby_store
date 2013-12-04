@@ -3,11 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Firstname</th>
       <th>Lastname</th>
-      <th>Phone</th>
+      <th>Firstname</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,13 +15,15 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.email %></td>
-        <td><%= customer.password %></td>
-        <td><%= customer.firstName %></td>
+
         <td><%= customer.lastName %></td>
-        <td><%= customer.phone %></td>
+        <td><%= customer.firstName %></td>
+        <td><%= customer.email %></td>
         <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Details', customer_details_path(customer)%> </td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Orders', customer_orders_path(customer) %></td>
+
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
